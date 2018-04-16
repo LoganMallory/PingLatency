@@ -11,7 +11,7 @@ import pandas as pd
 from time import sleep
 import random
 
-def pingAddress(url = 'www.google.edu'):
+def pingAddress(url = 'www.google.com'):
     host = url
 
     ping = subprocess.Popen(
@@ -61,5 +61,5 @@ def main():
     initPingDF = getLatency(test, 'Lobby of Hotel')     #initialize a ping latency dataframe
     getPingData(initPingDF)                             #run more ping tests and export as csv's after every test
 
-
+main()
 
