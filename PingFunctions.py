@@ -47,10 +47,10 @@ def runPingTest(pingTimes, location):
 
 
 
-def getPingData(pingDF):
-    while True:                                         #YOU MUST EXIT THIS LOOP MANUALLY
-        pingDF = runPingTest(pingDF, 'Lobby of Hotel')  #get a dataframe of all ping data so far
-        pingDF.to_csv('PingDataFramePY.csv')            #export this file to the computer, overwriting the previous export
+def getPingData(pingDF, location):
+    while True:                                       #YOU MUST EXIT THIS LOOP MANUALLY
+        pingDF = runPingTest(pingDF, location)        #get a dataframe of all ping data so far
+        pingDF.to_csv('PingDataFrame.csv')            #export this file to the computer, overwriting the previous export
         sleeptime = random.randrange(1,600)             
         print('Sleeping for', sleeptime, 'seconds.....')#sleep for some random time between 1 and 600 seconds (10min)
         sleep(sleeptime)                                #you can exit the program while it is sleeping and it will not harm the data
@@ -59,7 +59,7 @@ def getPingData(pingDF):
 def main():
     test = pingAddress()                                #initialize some raw ping data
     initPingDF = getLatency(test, 'Lobby of Hotel')     #initialize a ping latency dataframe
-    getPingData(initPingDF)                             #run more ping tests and export as csv's after every test
+    getPingData(initPingDF, 'Lobby of Hotel')           #run more ping tests and export as csv's after every test
 
 main()
 
